@@ -1,6 +1,20 @@
 function get_data() {
-    var email = document.getElementById("one")
-    var senha = document.getElementById("two")
+    var email = $("#one").val()
+    var senha = $("#two").val()
 
-    window.alert(`User: ${email.value} \nPassword: ${senha.value}`)
+
+    $.ajax({
+        method: "POST",
+        url: "http://localhost:3000/autenticacao",
+        data: { "email": email, "senha": senha }
+
+
+    }).done(function(data) {
+        console.log(data)
+    })
+
+    
+
+    //window.alert(`User: ${email.value} \nPassword: ${senha.value}`)
 }
+
